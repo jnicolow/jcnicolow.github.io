@@ -1,0 +1,17 @@
+# Node
+node_modules/
+dist/
+.quasar/*
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

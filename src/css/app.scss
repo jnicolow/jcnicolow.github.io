@@ -1,0 +1,230 @@
+@use 'sass:color';
+
+/* ===== Typography ===== */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-display {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ===== Ambient Background ===== */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 600px 400px at 15% 30%, rgba(0, 117, 242, 0.04) 0%, transparent 100%),
+    radial-gradient(ellipse 500px 500px at 85% 15%, rgba(83, 153, 135, 0.04) 0%, transparent 100%),
+    radial-gradient(ellipse 400px 300px at 50% 85%, rgba(236, 195, 11, 0.03) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+/* ===== Sections ===== */
+.section-block {
+  padding: 100px 0;
+  position: relative;
+}
+
+.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 52px;
+}
+
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(196, 181, 183, 0.2), transparent);
+  max-width: 300px;
+  margin-left: 16px;
+}
+
+/* ===== Links ===== */
+a {
+  color: $primary;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: color.adjust($primary, $lightness: 10%);
+  }
+}
+
+::selection {
+  background: $primary;
+  color: #2a2021;
+}
+
+/* ===== Glass Cards (Dark Sections) ===== */
+.glass-card {
+  background: rgba(42, 32, 33, 0.65) !important;
+  border: 1px solid rgba(196, 181, 183, 0.1);
+  border-radius: 16px !important;
+  backdrop-filter: blur(12px);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    border-color: rgba(236, 195, 11, 0.15);
+    background: rgba(42, 32, 33, 0.85) !important;
+    transform: translateY(-4px);
+    box-shadow:
+      0 20px 40px rgba(0, 0, 0, 0.2),
+      0 0 60px rgba(236, 195, 11, 0.03);
+  }
+}
+
+/* ===== Skill Chips (Dark Sections) ===== */
+.skill-chip {
+  border: 1px solid rgba(196, 181, 183, 0.12) !important;
+  background: rgba(42, 32, 33, 0.5) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.8rem !important;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: $primary !important;
+    border-color: rgba(236, 195, 11, 0.3) !important;
+    background: rgba(236, 195, 11, 0.08) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(236, 195, 11, 0.06);
+  }
+}
+
+/* ===== Tech Tags ===== */
+.tech-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: $secondary;
+  padding: 4px 12px;
+  border-radius: 4px;
+  background: rgba(83, 153, 135, 0.1);
+  white-space: nowrap;
+}
+
+/* ===== Timeline Overrides ===== */
+.q-timeline {
+  &__dot {
+    .q-timeline__dot-bg {
+      background: $primary !important;
+    }
+  }
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #503d3f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(196, 181, 183, 0.25);
+  border-radius: 3px;
+
+  &:hover {
+    background: rgba(196, 181, 183, 0.4);
+  }
+}
+
+/* =======================================
+   Light Sections (Bright Snow #f9f8f8)
+   ======================================= */
+.section-light {
+  background: #f9f8f8;
+
+  /* Text overrides for light background */
+  h1, h2, h3, h4, h5, h6 { color: #503d3f; }
+
+  .text-white { color: #503d3f !important; }
+  .text-grey-4 { color: #6b5557 !important; }
+  .text-grey-5 { color: #7a6466 !important; }
+  .text-grey-6 { color: #8a7678 !important; }
+  strong { color: #3a2c2d !important; }
+
+  /* Darken amber for readability on white */
+  .text-primary { color: #9e8500 !important; }
+
+  .section-title::after {
+    background: linear-gradient(to right, rgba(80, 61, 63, 0.12), transparent) !important;
+  }
+
+  /* Cards become white on light sections */
+  .glass-card {
+    background: #ffffff !important;
+    border-color: rgba(80, 61, 63, 0.06) !important;
+    backdrop-filter: none !important;
+    box-shadow: 0 2px 20px rgba(80, 61, 63, 0.06) !important;
+
+    &:hover {
+      background: #ffffff !important;
+      border-color: rgba(236, 195, 11, 0.25) !important;
+      transform: translateY(-4px);
+      box-shadow:
+        0 12px 40px rgba(80, 61, 63, 0.08),
+        0 0 40px rgba(236, 195, 11, 0.04) !important;
+    }
+  }
+
+  /* Tech tags on light bg */
+  .tech-tag {
+    background: rgba(83, 153, 135, 0.08);
+    color: #3d7565;
+  }
+
+  /* Skill chips on light bg */
+  .skill-chip {
+    background: rgba(80, 61, 63, 0.05) !important;
+    border-color: rgba(80, 61, 63, 0.1) !important;
+    color: #6b5557 !important;
+
+    &:hover {
+      color: #9e8500 !important;
+      border-color: rgba(236, 195, 11, 0.35) !important;
+      background: rgba(236, 195, 11, 0.08) !important;
+    }
+  }
+
+  /* Links on light bg */
+  a {
+    color: #9e8500;
+
+    &:hover {
+      color: #b89c00;
+    }
+  }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .section-block {
+    padding: 64px 0;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-block {
+    padding: 48px 0;
+  }
+}

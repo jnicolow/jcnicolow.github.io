@@ -1,0 +1,32 @@
+{
+  "name": "jnicolow-portfolio",
+  "version": "1.0.0",
+  "description": "Joel Nicolow — personal portfolio (Vue + Quasar)",
+  "productName": "Joel Nicolow",
+  "author": "Joel Nicolow",
+  "private": true,
+  "scripts": {
+    "dev": "quasar dev",
+    "build": "quasar build",
+    "lint": "eslint --ext .js,.vue ./src"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.16.0",
+    "quasar": "^2.17.0",
+    "sharp": "^0.34.5",
+    "vue": "^3.5.0",
+    "vue-router": "^4.4.0"
+  },
+  "devDependencies": {
+    "@quasar/app-vite": "^2.1.0",
+    "autoprefixer": "^10.4.0",
+    "eslint": "^9.0.0",
+    "eslint-plugin-vue": "^9.0.0",
+    "sass-embedded": "^1.80.0"
+  },
+  "engines": {
+    "node": "^24 || ^22 || ^20 || ^18",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}

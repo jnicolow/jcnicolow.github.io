@@ -57,17 +57,17 @@ function categoryIcon (cat) {
 <style lang="scss" scoped>
 .skill-card {
   background: #ffffff;
-  border: 1px solid rgba(80, 61, 63, 0.06);
+  border: 1px solid rgba(53, 84, 49, 0.06);
   border-radius: 16px;
-  box-shadow: 0 2px 20px rgba(80, 61, 63, 0.06);
+  box-shadow: 0 2px 20px rgba(53, 84, 49, 0.06);
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    border-color: rgba(236, 195, 11, 0.25);
+    border-color: rgba(240, 211, 160, 0.25);
     transform: translateY(-4px);
     box-shadow:
-      0 12px 40px rgba(80, 61, 63, 0.08),
-      0 0 40px rgba(236, 195, 11, 0.04);
+      0 12px 40px rgba(53, 84, 49, 0.08),
+      0 0 40px rgba(240, 211, 160, 0.04);
   }
 }
 </style>

@@ -115,7 +115,7 @@ onUnmounted(() => {
   font-size: clamp(2.5rem, 6vw, 4rem);
   letter-spacing: -0.03em;
   line-height: 1.1;
-  background: linear-gradient(135deg, #f9f8f8 40%, #ecc30b 100%);
+  background: linear-gradient(135deg, #f9f8f8 40%, #F0D3A0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -127,7 +127,7 @@ onUnmounted(() => {
   font-size: clamp(1.1rem, 3vw, 1.6rem);
   letter-spacing: -0.01em;
   line-height: 1.3;
-  color: rgba(196, 181, 183, 0.8);
+  color: rgba(240, 211, 160, 0.8);
   -webkit-text-fill-color: unset;
   animation: fadeUp 0.6s ease both;
   animation-delay: 0.35s;
@@ -160,10 +160,10 @@ onUnmounted(() => {
   margin: 0 auto;
   border-radius: 8px;
   overflow: hidden;
-  border: 2px solid rgba(196, 181, 183, 0.12);
+  border: 2px solid rgba(240, 211, 160, 0.12);
   box-shadow:
     0 20px 50px rgba(0, 0, 0, 0.25),
-    0 0 80px rgba(236, 195, 11, 0.04);
+    0 0 80px rgba(240, 211, 160, 0.04);
 }
 
 .portrait-img {

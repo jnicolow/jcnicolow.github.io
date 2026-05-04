@@ -118,7 +118,7 @@ onUnmounted(() => {
 
 .about-stat {
   padding: 12px 20px;
-  border-left: 2px solid rgba(83, 153, 135, 0.4);
+  border-left: 2px solid rgba(88, 114, 82, 0.4);
 
   &-value {
     font-size: 1rem;
@@ -190,7 +190,7 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   min-height: 80px;
-  background: rgba(80, 61, 63, 0.22);
-  border: 1px dashed rgba(196, 181, 183, 0.18);
+  background: rgba(53, 84, 49, 0.22);
+  border: 1px dashed rgba(240, 211, 160, 0.18);
 }
 </style>

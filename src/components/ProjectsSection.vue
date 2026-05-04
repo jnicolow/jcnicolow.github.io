@@ -97,7 +97,7 @@ const activeTab = ref(0)
 
   &--vertical {
     max-width: 280px;
-    border-left: 2px solid rgba(80, 61, 63, 0.15);
+    border-left: 2px solid rgba(53, 84, 49, 0.15);
   }
 }
 
@@ -146,7 +146,7 @@ const activeTab = ref(0)
   font-size: 0.82rem;
   padding: 8px 18px;
   border-radius: 8px;
-  border: 1px solid rgba(80, 61, 63, 0.15);
+  border: 1px solid rgba(53, 84, 49, 0.15);
   color: #6b5557;
   background: transparent;
   transition: all 0.3s ease;
@@ -154,10 +154,10 @@ const activeTab = ref(0)
 
   &:hover {
     color: var(--q-primary);
-    border-color: rgba(236, 195, 11, 0.4);
-    background: rgba(236, 195, 11, 0.06);
+    border-color: rgba(240, 211, 160, 0.4);
+    background: rgba(240, 211, 160, 0.06);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(236, 195, 11, 0.08);
+    box-shadow: 0 4px 12px rgba(240, 211, 160, 0.08);
   }
 }
 </style>

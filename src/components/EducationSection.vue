@@ -163,7 +163,7 @@ import {
 <style lang="scss" scoped>
 .poster-row {
   padding-bottom: 8px;
-  border-bottom: 1px solid rgba(196, 181, 183, 0.08);
+  border-bottom: 1px solid rgba(240, 211, 160, 0.08);
 
   &:last-child {
     border-bottom: none;
@@ -178,8 +178,8 @@ import {
   font-size: 0.82rem;
   padding: 8px 18px;
   border-radius: 8px;
-  border: 1px solid rgba(196, 181, 183, 0.15);
-  color: rgba(196, 181, 183, 0.7);
+  border: 1px solid rgba(240, 211, 160, 0.15);
+  color: rgba(240, 211, 160, 0.7);
   background: transparent;
   transition: all 0.3s ease;
   text-decoration: none;
@@ -187,10 +187,10 @@ import {
 
   &:hover {
     color: var(--q-primary);
-    border-color: rgba(236, 195, 11, 0.4);
-    background: rgba(236, 195, 11, 0.06);
+    border-color: rgba(240, 211, 160, 0.4);
+    background: rgba(240, 211, 160, 0.06);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(236, 195, 11, 0.08);
+    box-shadow: 0 4px 12px rgba(240, 211, 160, 0.08);
   }
 }
 </style>

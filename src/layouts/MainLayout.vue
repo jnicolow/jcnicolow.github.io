@@ -167,9 +167,9 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 
 <style lang="scss" scoped>
 .main-header {
-  background: rgba(80, 61, 63, 0.88);
+  background: rgba(53, 84, 49, 0.88);
   backdrop-filter: blur(20px) saturate(1.5);
-  border-bottom: 1px solid rgba(196, 181, 183, 0.1);
+  border-bottom: 1px solid rgba(240, 211, 160, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -206,8 +206,8 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 }
 
 .mobile-drawer {
-  background: #503d3f !important;
-  border-left: 1px solid rgba(196, 181, 183, 0.08);
+  background: #355431 !important;
+  border-left: 1px solid rgba(240, 211, 160, 0.08);
 }
 
 .side-social,
@@ -225,7 +225,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   left: 32px;
 
   a {
-    color: rgba(196, 181, 183, 0.5);
+    color: rgba(240, 211, 160, 0.5);
     transition: all 0.3s ease;
 
     &:hover {
@@ -242,7 +242,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
     writing-mode: vertical-rl;
     font-size: 0.78rem;
     letter-spacing: 0.08em;
-    color: rgba(196, 181, 183, 0.5);
+    color: rgba(240, 211, 160, 0.5);
     transition: all 0.3s ease;
 
     &:hover {
@@ -255,7 +255,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 .side-line {
   width: 1px;
   height: 90px;
-  background: rgba(196, 181, 183, 0.2);
+  background: rgba(240, 211, 160, 0.2);
 }
 
 .back-to-top {
@@ -263,16 +263,16 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   bottom: 32px;
   right: 84px;
   z-index: 100;
-  color: rgba(83, 153, 135, 0.5) !important;
-  border: 1px solid rgba(83, 153, 135, 0.2);
+  color: rgba(88, 114, 82, 0.5) !important;
+  border: 1px solid rgba(88, 114, 82, 0.2);
   backdrop-filter: blur(8px);
-  background: rgba(83, 153, 135, 0.06) !important;
+  background: rgba(88, 114, 82, 0.06) !important;
   transition: all 0.25s ease;
 
   &:hover {
-    color: rgba(83, 153, 135, 0.9) !important;
-    border-color: rgba(83, 153, 135, 0.4);
-    background: rgba(83, 153, 135, 0.12) !important;
+    color: rgba(88, 114, 82, 0.9) !important;
+    border-color: rgba(88, 114, 82, 0.4);
+    background: rgba(88, 114, 82, 0.12) !important;
     transform: translateY(-2px);
   }
 

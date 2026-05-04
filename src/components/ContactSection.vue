@@ -48,7 +48,7 @@ import { personal } from 'src/data/resume'
   transition: all 0.3s ease;
 
   &:hover {
-    box-shadow: 0 8px 32px rgba(236, 195, 11, 0.2);
+    box-shadow: 0 8px 32px rgba(240, 211, 160, 0.2);
     transform: translateY(-2px);
   }
 }

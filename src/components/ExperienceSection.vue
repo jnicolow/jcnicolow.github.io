@@ -130,7 +130,7 @@ const canToggleExperience = computed(() => {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #503d3f;
+  background: #355431;
   border: 2px solid var(--q-secondary);
   transform: translateX(-5px);
   z-index: 1;
@@ -139,7 +139,7 @@ const canToggleExperience = computed(() => {
 
 .timeline-item:hover .timeline-marker {
   background: var(--q-secondary);
-  box-shadow: 0 0 12px rgba(83, 153, 135, 0.4);
+  box-shadow: 0 0 12px rgba(88, 114, 82, 0.4);
 }
 
 .timeline-content {
@@ -166,7 +166,7 @@ const canToggleExperience = computed(() => {
 }
 
 .expand-btn {
-  border: 1px solid rgba(83, 153, 135, 0.35);
+  border: 1px solid rgba(88, 114, 82, 0.35);
   border-radius: 8px;
 }
 

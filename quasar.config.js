@@ -21,22 +21,26 @@ export default configure((/* ctx */) => {
     },
 
     devServer: {
-      open: true
+      open: true,
+      // Avoid clash with another process often bound to 127.0.0.1:9000 (e.g. Python),
+      // which makes http://localhost:9000/ return ERR_INVALID_HTTP_RESPONSE in the browser.
+      port: 9100,
+      strictPort: false
     },
 
     framework: {
       config: {
         dark: true,
         brand: {
-          primary: '#ecc30b',
-          secondary: '#539987',
+          primary: '#F0D3A0',
+          secondary: '#587252',
           accent: '#0075f2',
-          dark: '#503d3f',
-          'dark-page': '#503d3f',
-          positive: '#539987',
-          negative: '#f87171',
+          dark: '#355431',
+          'dark-page': '#355431',
+          positive: '#9FBF97',
+          negative: '#E9CC94',
           info: '#0075f2',
-          warning: '#ecc30b'
+          warning: '#F0D3A0'
         }
       },
       plugins: ['Dialog', 'Scroll']

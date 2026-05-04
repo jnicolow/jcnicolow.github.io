@@ -129,14 +129,14 @@ function navigate (dir) {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(80, 61, 63, 0.65);
+  background: rgba(53, 84, 49, 0.65);
   backdrop-filter: blur(4px);
   opacity: 0;
   transition: opacity 0.35s ease;
 }
 
 .lightbox-backdrop {
-  background: rgba(80, 61, 63, 0.95);
+  background: rgba(53, 84, 49, 0.95);
   width: 100%;
   height: 100%;
   position: relative;

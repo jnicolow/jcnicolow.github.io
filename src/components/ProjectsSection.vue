@@ -1,6 +1,6 @@
 <template>
   <section id="projects" class="section-block section-light">
-    <div class="q-px-lg" style="max-width: 1100px; margin: 0 auto">
+    <div class="site-wrap">
       <h2 class="section-title text-white">
         Some Projects
       </h2>
@@ -45,7 +45,7 @@
                 {{ project.dates }}
               </p>
 
-              <p class="text-grey-4 q-mt-md" style="font-size: 0.92rem; line-height: 1.7; max-width: 640px">
+              <p class="text-grey-4 q-mt-md" style="font-size: 0.92rem; line-height: 1.7; max-width: min(760px, 100%)">
                 {{ project.description }}
               </p>
 

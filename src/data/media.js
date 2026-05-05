@@ -19,7 +19,7 @@ function sortedUrls (modules) {
 }
 
 /** Random order each page load — avoids alphabetically similar filenames clustering together */
-function shuffleArray (arr) {
+export function shuffleArray (arr) {
   const a = [...arr]
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
@@ -68,20 +68,38 @@ const galleryModules = {
 
 export const heroPhotos = shuffleArray(sortedUrls(heroModules))
 
-export const aboutPhotos = shuffleArray(sortedUrls(aboutModules))
+/** About mosaic slot order: left tall cell, top-right square, bottom wide */
+const ABOUT_MOSAIC_FILENAMES = [
+  'Kahikinui Station Joel Mos House.jpg',
+  'planet_presentation_square.jpg',
+  'hcc2024_square.png'
+]
 
-/** Every image in `gallery/` — shuffled order; captions derived from filename */
-export const galleryItems = shuffleArray(
-  Object.keys(galleryModules)
-    .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }))
-    .map((path) => {
-      const mod = galleryModules[path]
-      const src = typeof mod === 'string' ? mod : mod.default
-      const caption = basenameLabel(path)
-      return {
-        src,
-        alt: caption || 'Gallery photo',
-        caption
-      }
-    })
-)
+function resolveAboutUrl (basename) {
+  const key = Object.keys(aboutModules).find((p) => {
+    const normalized = p.replace(/\\/g, '/')
+    return normalized.endsWith('/' + basename) || normalized.endsWith(basename)
+  })
+  if (!key) {
+    console.warn(`[media] about image not found: ${basename}`)
+    return null
+  }
+  const mod = aboutModules[key]
+  return typeof mod === 'string' ? mod : mod.default
+}
+
+export const aboutMosaicPhotos = ABOUT_MOSAIC_FILENAMES.map(resolveAboutUrl)
+
+/** Every image in `gallery/` — stable sort; captions derived from filename */
+export const galleryItemsAll = Object.keys(galleryModules)
+  .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }))
+  .map((path) => {
+    const mod = galleryModules[path]
+    const src = typeof mod === 'string' ? mod : mod.default
+    const caption = basenameLabel(path)
+    return {
+      src,
+      alt: caption || 'Gallery photo',
+      caption
+    }
+  })

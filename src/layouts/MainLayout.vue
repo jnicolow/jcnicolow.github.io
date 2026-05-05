@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh lpR fFf">
     <q-header class="main-header" :class="{ 'header-scrolled': scrolled, 'header-hidden': headerHidden }">
-      <q-toolbar class="q-px-md" style="max-width: 1100px; margin: 0 auto">
+      <q-toolbar class="site-wrap">
         <a href="#hero" class="logo font-mono text-primary text-weight-bold text-h6 q-mr-auto" @click.prevent="scrollTo('hero')">
           {{ personal.brand }}
         </a>

@@ -34,6 +34,17 @@ body::before {
   position: relative;
 }
 
+/** Main column: wider than legacy 1100px; gutters scale down on small viewports */
+.site-wrap {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1360px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(14px, 3vw, 22px);
+  padding-right: clamp(14px, 3vw, 22px);
+}
+
 .section-title {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 1.85rem;

@@ -1,14 +1,14 @@
 <template>
   <section id="gallery" class="section-block">
-    <div class="q-px-lg" style="max-width: 1100px; margin: 0 auto">
+    <div class="site-wrap">
       <h2 class="section-title text-white">
         Gallery
       </h2>
 
-      <div v-if="gallery.length" class="gallery-grid">
+      <div v-if="displayedGallery.length" class="gallery-grid">
         <div
-          v-for="(img, i) in gallery"
-          :key="i"
+          v-for="(img, i) in displayedGallery"
+          :key="img.src"
           class="gallery-cell"
           :class="'cell-' + i"
         >
@@ -29,6 +29,19 @@
       <p v-else class="text-grey-6 text-body2 text-center q-py-lg font-mono">
         Add images to <strong>src/assets/media/gallery/</strong>
       </p>
+
+      <div v-if="canToggleGallery" class="row justify-center q-mt-lg">
+        <q-btn
+          flat
+          no-caps
+          color="secondary"
+          class="font-mono text-weight-medium expand-btn"
+          padding="10px 24px"
+          :label="galleryExpanded ? 'Show less' : 'Show all photos'"
+          :icon-right="galleryExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+          @click="galleryExpanded = !galleryExpanded"
+        />
+      </div>
     </div>
 
     <!-- Lightbox -->
@@ -45,27 +58,27 @@
           @click.stop="lightboxOpen = false"
         />
         <q-btn
-          v-if="gallery.length > 1"
+          v-if="displayedGallery.length > 1"
           flat round dense icon="mdi-chevron-left" color="white" size="lg"
           class="lightbox-nav lightbox-prev"
           @click.stop="navigate(-1)"
         />
         <q-img
-          v-if="activeIdx !== null"
-          :src="gallery[activeIdx].src"
-          :alt="gallery[activeIdx].alt"
+          v-if="activeIdx !== null && displayedGallery[activeIdx]"
+          :src="displayedGallery[activeIdx].src"
+          :alt="displayedGallery[activeIdx].alt"
           fit="contain"
           class="lightbox-img"
           @click.stop
         />
         <q-btn
-          v-if="gallery.length > 1"
+          v-if="displayedGallery.length > 1"
           flat round dense icon="mdi-chevron-right" color="white" size="lg"
           class="lightbox-nav lightbox-next"
           @click.stop="navigate(1)"
         />
         <div class="lightbox-caption font-mono text-white text-caption" @click.stop>
-          {{ gallery[activeIdx]?.caption }}
+          {{ displayedGallery[activeIdx]?.caption }}
         </div>
       </div>
     </q-dialog>
@@ -73,10 +86,61 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { galleryItems as gallery } from 'src/data/media'
+import { computed, ref, onMounted, onUnmounted, watch } from 'vue'
+import { galleryItemsAll, shuffleArray } from 'src/data/media'
+
+const GALLERY_PREVIEW_COUNT = 6
+const GALLERY_ROTATE_MS = 45_000
+
+const allGallery = galleryItemsAll
+const galleryExpanded = ref(false)
+const previewSlice = ref([])
+
+const displayedGallery = computed(() => {
+  if (galleryExpanded.value || allGallery.length <= GALLERY_PREVIEW_COUNT) {
+    return allGallery
+  }
+  return previewSlice.value
+})
+
+const canToggleGallery = computed(() => allGallery.length > GALLERY_PREVIEW_COUNT)
+
+function pickPreviewSix () {
+  if (allGallery.length <= GALLERY_PREVIEW_COUNT) {
+    previewSlice.value = [...allGallery]
+    return
+  }
+  previewSlice.value = shuffleArray([...allGallery]).slice(0, GALLERY_PREVIEW_COUNT)
+}
+
+pickPreviewSix()
 
 const lightboxOpen = ref(false)
+
+let rotateTimer = null
+
+onMounted(() => {
+  rotateTimer = setInterval(() => {
+    if (galleryExpanded.value || lightboxOpen.value) return
+    if (allGallery.length > GALLERY_PREVIEW_COUNT) {
+      pickPreviewSix()
+    }
+  }, GALLERY_ROTATE_MS)
+})
+
+onUnmounted(() => {
+  clearInterval(rotateTimer)
+})
+
+watch(galleryExpanded, (expanded) => {
+  if (!expanded && allGallery.length > GALLERY_PREVIEW_COUNT) {
+    pickPreviewSix()
+    if (lightboxOpen.value) {
+      activeIdx.value = 0
+    }
+  }
+})
+
 const activeIdx = ref(null)
 
 function openLightbox (i) {
@@ -85,7 +149,9 @@ function openLightbox (i) {
 }
 
 function navigate (dir) {
-  activeIdx.value = (activeIdx.value + dir + gallery.length) % gallery.length
+  const n = displayedGallery.value.length
+  if (!n) return
+  activeIdx.value = (activeIdx.value + dir + n) % n
 }
 </script>
 
@@ -171,5 +237,10 @@ function navigate (dir) {
   left: 50%;
   transform: translateX(-50%);
   opacity: 0.7;
+}
+
+.expand-btn {
+  border: 1px solid rgba(88, 114, 82, 0.35);
+  border-radius: 8px;
 }
 </style>

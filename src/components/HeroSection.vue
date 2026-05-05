@@ -1,7 +1,7 @@
 <template>
   <section id="hero" class="hero-section flex flex-center">
-    <div class="hero-grid">
-      <div class="hero-text q-px-lg">
+    <div class="hero-grid site-wrap">
+      <div class="hero-text">
         <p class="font-mono text-secondary text-body2 q-mb-md hero-intro">Hey there!, I'm...</p>
 
         <h1 class="hero-name font-display text-weight-bold q-mb-sm">
@@ -39,7 +39,7 @@
         </div>
       </div>
 
-      <div v-if="photos.length" class="hero-portrait gt-sm q-px-lg">
+      <div v-if="photos.length" class="hero-portrait gt-sm">
         <div class="portrait-frame">
           <img
             v-for="(src, i) in photos"
@@ -94,7 +94,6 @@ onUnmounted(() => {
 }
 
 .hero-grid {
-  max-width: 1100px;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -136,7 +135,7 @@ onUnmounted(() => {
 .hero-summary {
   font-size: 1rem;
   line-height: 1.8;
-  max-width: 520px;
+  max-width: min(620px, 100%);
   animation: fadeUp 0.6s ease both;
   animation-delay: 0.5s;
 }
@@ -156,7 +155,7 @@ onUnmounted(() => {
   position: relative;
   width: 100%;
   aspect-ratio: 3 / 4;
-  max-width: 380px;
+  max-width: min(440px, 100%);
   margin: 0 auto;
   border-radius: 8px;
   overflow: hidden;

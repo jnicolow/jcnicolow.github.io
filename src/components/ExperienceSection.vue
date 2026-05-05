@@ -1,8 +1,8 @@
 <template>
-  <section id="experience" class="section-block">
-    <div class="q-px-lg" style="max-width: 1100px; margin: 0 auto">
+  <section id="experience" class="section-block experience-section">
+    <div class="site-wrap">
       <h2 class="section-title text-white">
-        Where I've Worked
+        Employment
       </h2>
 
       <div class="timeline">
@@ -12,29 +12,29 @@
           class="timeline-item"
         >
           <div class="timeline-marker" />
-          <div class="timeline-content glass-card q-pa-lg">
+          <div class="timeline-content glass-card q-pa-xl">
             <div class="timeline-header">
-              <h3 class="font-display text-h6 text-white text-weight-bold q-my-none">
+              <h3 class="font-display timeline-job-title text-white text-weight-bold q-my-none">
                 {{ job.title }}
               </h3>
-              <span class="timeline-date font-mono text-grey-6 text-h7 q-my-none">
+              <span class="timeline-date font-mono text-grey-5 text-body2 q-my-none">
                 {{ job.dates }}
               </span>
             </div>
 
-            <p class="text-primary text-subtitle2 q-mb-none">{{ job.company }}</p>
-            <p class="font-mono text-grey-6 text-caption q-mt-xs q-mb-none">
+            <p class="text-primary timeline-company text-subtitle1 q-mb-none q-mt-sm">{{ job.company }}</p>
+            <p class="font-mono text-grey-5 text-body2 q-mt-xs q-mb-none">
               {{ job.location }}
             </p>
 
-            <div class="q-mt-md">
+            <div class="q-mt-lg timeline-bullets">
               <div
                 v-for="(bullet, j) in job.bullets"
                 :key="j"
-                class="row no-wrap q-mb-sm"
+                class="row no-wrap q-mb-md"
               >
-                <span class="text-primary q-mr-sm" style="flex-shrink: 0; margin-top: 2px">&#9656;</span>
-                <span class="text-grey-4" style="font-size: 0.92rem; line-height: 1.7">{{ bullet }}</span>
+                <span class="timeline-bullet-marker q-mr-sm" style="flex-shrink: 0; margin-top: 4px">&#9656;</span>
+                <span class="text-grey-3 timeline-bullet-text">{{ bullet }}</span>
               </div>
             </div>
           </div>
@@ -99,24 +99,37 @@ const canToggleExperience = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-.timeline {
-  position: relative;
-  padding-left: 2rem;
+/* Matches $secondary / $positive in quasar.variables.scss */
+.experience-section {
+  --exp-accent: #a83e03;
 }
 
+.timeline {
+  position: relative;
+  padding-left: 2.25rem;
+}
+
+/* Vertical track (“scrollbar”) beside roles */
 .timeline::before {
   content: "";
   position: absolute;
   left: 0;
-  top: 8px;
-  bottom: 8px;
-  width: 2px;
-  background: var(--q-secondary);
+  top: 10px;
+  bottom: 10px;
+  width: 5px;
+  border-radius: 3px;
+  background: linear-gradient(
+    180deg,
+    var(--exp-accent) 0%,
+    rgba(168, 62, 3, 0.35) 55%,
+    rgba(168, 62, 3, 0.2) 100%
+  );
+  box-shadow: 0 0 20px rgba(168, 62, 3, 0.15);
 }
 
 .timeline-item {
   position: relative;
-  padding-bottom: 2rem;
+  padding-bottom: 2.75rem;
 
   &:last-child {
     padding-bottom: 0;
@@ -125,63 +138,100 @@ const canToggleExperience = computed(() => {
 
 .timeline-marker {
   position: absolute;
-  left: -2rem;
-  top: 24px;
-  width: 12px;
-  height: 12px;
+  left: -2.25rem;
+  top: 28px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   background: #355431;
-  border: 2px solid var(--q-secondary);
-  transform: translateX(-5px);
+  border: 3px solid var(--exp-accent);
+  transform: translateX(calc(-50% + 2.5px));
   z-index: 1;
   transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
 .timeline-item:hover .timeline-marker {
-  background: var(--q-secondary);
-  box-shadow: 0 0 12px rgba(88, 114, 82, 0.4);
+  background: var(--exp-accent);
+  box-shadow:
+    0 0 0 4px rgba(168, 62, 3, 0.2),
+    0 0 16px rgba(168, 62, 3, 0.45);
 }
 
 .timeline-content {
-  border-left: 3px solid transparent !important;
-  border-radius: 4px 16px 16px 4px !important;
+  border-left: 4px solid transparent !important;
+  border-radius: 6px 20px 20px 6px !important;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.22),
+    0 0 0 1px rgba(240, 211, 160, 0.06);
 }
 
 .timeline-item:hover .timeline-content {
-  border-left-color: var(--q-secondary) !important;
-  transform: translateX(4px);
+  border-left-color: var(--exp-accent) !important;
+  transform: translateX(6px);
+  box-shadow:
+    0 18px 48px rgba(0, 0, 0, 0.28),
+    0 0 48px rgba(168, 62, 3, 0.08);
+}
+
+.timeline-job-title {
+  font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+}
+
+.timeline-company {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.timeline-bullet-marker {
+  color: var(--exp-accent);
+  font-size: 0.95rem;
+}
+
+.timeline-bullet-text {
+  font-size: 1.03rem;
+  line-height: 1.75;
 }
 
 .timeline-header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
+  align-items: flex-start;
+  gap: 1.25rem;
 }
 
 .timeline-date {
   white-space: nowrap;
   flex-shrink: 0;
+  opacity: 0.95;
 }
 
 .expand-btn {
-  border: 1px solid rgba(88, 114, 82, 0.35);
+  border: 1px solid rgba(168, 62, 3, 0.4);
   border-radius: 8px;
 }
 
 @media (max-width: 600px) {
   .timeline {
-    padding-left: 1.5rem;
+    padding-left: 1.65rem;
   }
 
   .timeline-marker {
-    left: -1.5rem;
+    left: -1.65rem;
+    transform: translateX(calc(-50% + 2px));
   }
 
   .timeline-header {
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.35rem;
+    align-items: flex-start;
+  }
+
+  .timeline-job-title {
+    font-size: clamp(1.22rem, 5vw, 1.55rem);
   }
 }
 </style>

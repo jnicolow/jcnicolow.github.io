@@ -1,12 +1,12 @@
 <template>
   <section id="about" class="section-block section-light">
-    <div class="q-px-lg" style="max-width: 1100px; margin: 0 auto">
+    <div class="site-wrap">
       <h2 class="section-title text-white">
         About Me
       </h2>
 
       <div class="row q-col-gutter-xl items-start">
-        <div :class="aboutPhotos.length ? 'col-12 col-md-7' : 'col-12'">
+        <div :class="hasAboutPhotos ? 'col-12 col-md-7' : 'col-12'">
           <p
             v-for="(para, i) in personal.about"
             :key="i"
@@ -26,7 +26,7 @@
           </div>
         </div>
 
-        <div v-if="aboutPhotos.length" class="col-12 col-md-5">
+        <div v-if="hasAboutPhotos" class="col-12 col-md-5">
           <div class="photo-mosaic">
             <div class="mosaic-tall mosaic-cell">
               <q-img
@@ -66,42 +66,17 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { computed } from 'vue'
 import { personal } from 'src/data/resume'
-import { aboutPhotos } from 'src/data/media'
+import { aboutMosaicPhotos } from 'src/data/media'
 
-/** Three mosaic cells: up to 3 distinct random picks from `about/`; `null` = empty slot */
-const mosaicSlots = ref([null, null, null])
+const hasAboutPhotos = computed(() => aboutMosaicPhotos.some(Boolean))
 
-function shuffleInPlace (arr) {
-  const a = arr
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[a[i], a[j]] = [a[j], a[i]]
-  }
-  return a
-}
-
-function refreshMosaic () {
-  const pool = [...aboutPhotos]
-  shuffleInPlace(pool)
-  const picks = pool.slice(0, Math.min(3, pool.length))
-  while (picks.length < 3) picks.push(null)
-  shuffleInPlace(picks)
-  mosaicSlots.value = picks
-}
-
-let rotateTimer = null
-
-onMounted(() => {
-  refreshMosaic()
-  if (aboutPhotos.length >= 1) {
-    rotateTimer = setInterval(refreshMosaic, 5000)
-  }
-})
-
-onUnmounted(() => {
-  clearInterval(rotateTimer)
+/** [tall, square, wide] — fixed in `src/data/media.js` */
+const mosaicSlots = computed(() => {
+  const out = aboutMosaicPhotos.map((url) => url || null)
+  while (out.length < 3) out.push(null)
+  return out.slice(0, 3)
 })
 </script>
 

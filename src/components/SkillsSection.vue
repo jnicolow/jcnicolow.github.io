@@ -1,6 +1,6 @@
 <template>
   <section id="skills" class="section-block section-light">
-    <div class="q-px-lg" style="max-width: 1100px; margin: 0 auto">
+    <div class="site-wrap">
       <h2 class="section-title text-white">
         Skills
       </h2>
